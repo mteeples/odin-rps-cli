@@ -1,5 +1,14 @@
 // getComputerChoice()
 // randomly returns rock, paper, or scissors
+function getComputerChoice() {
+    const choices = [
+        "rock",
+        "paper",
+        "scissors"
+    ];
+    const randIndex = Math.floor(Math.random() * 3);
+    return choices[randIndex];
+}
 
 // getPlayerChoice()
 // prompt for selection. 
@@ -19,14 +28,14 @@ function getPlayerChoice() {
         } else {
             userInput = prompt(
                 "Invalid response. Please enter rock, paper, or scissors"
-            ).toLowerCase()
+            ).toLowerCase();
         }
     }
 }
 
 // playRound(playerSelection, computerSelection) -> String declaring the winner "You lose! Paper beats rock"
 function playRound(playerSelection, computerSelection) {
-    return "You lose! Paper beats Rock";
+    return `User: ${playerSelection}, Computer: ${computerSelection}`;
 }
 
 // game()
@@ -34,7 +43,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     console.log("Welcome to Rock, Paper, Scissors");
     for (let i = 0; i < 5; i++) {
-        console.log(playRound(getPlayerChoice(), "rock"));
+        console.log(playRound(getPlayerChoice(), getComputerChoice()));
     }
     console.log("Thank you for playing");
 }
