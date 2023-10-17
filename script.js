@@ -35,7 +35,24 @@ function getPlayerChoice() {
 
 // playRound(playerSelection, computerSelection) -> String declaring the winner "You lose! Paper beats rock"
 function playRound(playerSelection, computerSelection) {
-    return `User: ${playerSelection}, Computer: ${computerSelection}`;
+    const KEY_BEATS_VAL = {
+        "scissors": "paper",
+        "paper": "rock",
+        "rock": "scissors"
+    };
+    if (playerSelection === computerSelection) {
+        return "It's a tie!";
+    } else if (computerSelection === KEY_BEATS_VAL[playerSelection]) {
+        playerSelection = playerSelection.replace(
+            playerSelection.charAt(0),
+            playerSelection.charAt(0).toUpperCase());
+        return `You win! ${playerSelection} beats ${computerSelection}`;
+    } else {
+        computerSelection = computerSelection.replace(
+            computerSelection.charAt(0),
+            computerSelection.charAt(0).toUpperCase());
+        return `You lose! ${computerSelection} beats ${playerSelection}`;
+    }
 }
 
 // game()
